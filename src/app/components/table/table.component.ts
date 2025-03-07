@@ -22,14 +22,35 @@ export class TableComponent implements OnInit{
 
   }
 
-
-  // filteredUsers = [...this.users]; // Copy of users for filtering
+  
+  filteredUsers:any; // Copy of users for filtering
   searchName: string = '';
 
   filterUsers() {
-    this.users = this.users.filter(user =>
+    
+    this.filteredUsers = this.users.filter(user =>
       user.name.toLowerCase().includes(this.searchName.toLowerCase())
     );
+
+    if (this.filteredUsers.length>0) {
+      this.users=this.filteredUsers
+      
+    }
+    else{
+      const data = localStorage.getItem('users')
+      let userDetails :any=null
+      if(data){
+          userDetails= JSON.parse(data);
+          console.log(userDetails)
+          this.users=userDetails
+      }
+      
+    }
+
+
+
+
+    
   }
 
 

@@ -76,6 +76,8 @@ export class AdminhomeComponent implements OnInit{
           ...this.userForm.value
         };
         this.users.push(newUser);
+
+        localStorage.setItem('users',JSON.stringify(this.users))
         // this.userdetails.emit(this.users);
         // this.messenger.sendUserdata(this.users)
       } else {
