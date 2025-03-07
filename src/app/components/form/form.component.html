@@ -1,0 +1,8 @@
+    <!-- Form for Adding/Editing Users -->
+    <form [formGroup]="userForm" >
+        <input type="text" formControlName="name" placeholder="Name" required />
+        <input type="number" formControlName="age" placeholder="Age" required />
+        <input type="email" formControlName="salary" placeholder="salary" required />
+
+        <!-- <button type="submit">{{ editingIndex === null ? 'Submit' : 'Update' }}</button> -->
+    </form>

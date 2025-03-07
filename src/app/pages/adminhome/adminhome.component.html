@@ -1,0 +1,57 @@
+<div class="container">
+  
+        <div class="sidenav">
+            <div style="height: 50px;width: 100%;border-bottom: 1px solid black;">
+
+            </div>
+            <ul style="list-style: none;margin: 0;padding: 0;text-align: center;">
+                <li (click)="navclick('register')"  [ngClass]="registerform == true ? 'navcolor' : 'nocolor'" class="listitem">Register</li>
+                <li (click)="navclick('chat')" [ngClass]="chat == true ? 'navcolor' : 'nocolor'" class="listitem">Chat</li>
+            </ul>
+        </div>
+        <div class="formarea">
+                <div style="height: 50px;">
+
+                </div>
+                @if(registerform){
+                    <div style="width: 100%;display: flex;justify-content: center;align-items: center;padding: 50px 0;flex-direction: column;">
+                        
+                        <app-form  (userdetails)="userdataemitted($event)"  (editingIndex)="editingindexvalueEmitted($event)"></app-form>
+
+                        <button style="margin-top: 10px;" (click)="saveUser()" type="submit">{{ editingIndex === null ? 'Submit' : 'Update' }}</button>
+
+                        <app-table  [users]="users"  ></app-table>
+                    </div>
+                }
+
+
+                @if(chat){
+                        <div  style="width: 100%;display: flex;justify-content: center;align-items: center;padding: 50px 0;">
+                                <div style="width: 400px;height: 500px;border: 1px solid grey;position: relative;">
+
+                                    <div style="width: 100%;">
+                                        <ul style="list-style: none;">
+                                            <li *ngFor="let chat of chatlist; let i = index">
+                                              {{ chat }}
+                                            </li>
+                                          </ul>
+                                          
+
+                                    </div>
+
+                                    <div style="position: absolute;bottom: 0;left: 0;width: 100%;">
+                                        <input  type="text" style="width: 80%;" [(ngModel)]="chatinput">
+                                        <button (click)="chatsend()" >Send</button>
+                                    </div>
+                                     
+                                </div>
+                        </div>
+                }
+
+
+              
+        </div>
+
+    
+
+</div>

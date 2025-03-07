@@ -1,0 +1,29 @@
+
+<div style="margin-top: 20px;">
+  <input type="text" [(ngModel)]="searchName" (input)="filterUsers()" placeholder="Search by name" />
+</div>
+
+<table border="1">
+    <thead>
+      <tr>
+        <!-- <th>ID</th> -->
+        <th>Name</th>
+        <th>age</th>
+        <th>Salary</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+      <tr *ngFor="let user of users; let i = index">
+        <!-- <td>{{ user.id }}</td> -->
+        <td>{{ user.name }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.salary }}</td>
+        <td>
+          <button style="margin: 0 10px" (click)="editUser(i)">Edit</button>
+          <button (click)="deleteUser(i)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

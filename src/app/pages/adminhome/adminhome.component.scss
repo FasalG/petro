@@ -1,0 +1,46 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.header{
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.sidenav{
+    width: 10%;
+    height: 100%;
+}
+
+.formarea{
+    width: 100%;
+    height: auto;
+}
+
+.listitem{
+    padding: 5px;
+    cursor: pointer;
+    
+}
+
+.sidenav{
+    border-right: 1px solid black;
+}
+
+.navcolor{
+    background-color: grey;
+}
+
+.nocolor{
+    background-color:transparent;
+}
