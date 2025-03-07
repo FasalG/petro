@@ -49,6 +49,16 @@ export class AdminhomeComponent implements OnInit{
     this.messenger.getUserdata().subscribe((d:any)=>{
           console.log(d)
     })
+
+
+    this.loadChat(); // Load existing messages from localStorage
+
+    // Listen for chat updates from other tabs
+    window.addEventListener('storage', (event) => {
+      if (event.key === 'chatMessages') {
+        this.loadChat(); // Reload chat messages when storage updates
+      }
+    });
     
   }
 
@@ -109,9 +119,21 @@ export class AdminhomeComponent implements OnInit{
 
 
   chatsend(){
-    console.log(this.chatinput)
-    this.messenger.sendChat(this.chatinput)
-    this.chatinput=''
+    // console.log(this.chatinput)
+    // this.messenger.sendChat(this.chatinput)
+    // this.chatinput=''
+
+    if (!this.chatinput.trim()) return;
+
+    // Push new message and save to localStorage
+    this.chatlist.push(this.chatinput);
+    localStorage.setItem('chatMessages', JSON.stringify(this.chatlist));
+    this.chatinput = ''; // Clear input field
+  }
+
+  loadChat() {
+    const storedChat = localStorage.getItem('chatMessages');
+    this.chatlist = storedChat ? JSON.parse(storedChat) : [];
   }
 
   
